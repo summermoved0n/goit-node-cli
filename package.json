@@ -1,20 +1,21 @@
 {
   "name": "goit-node-cli",
   "version": "1.0.0",
-  "description": "Домашнє завдання 1\r Крок 1\r Створи репозиторій з назвою goit-node-cli, склонуй та ініціалізуй в ньому проєкт за допомогою команди npm init. Встанови як залежність проєкту пакет commander\r В корінь проєкту помісти файли з папки src\r Крок 2\r У файл contacts.js зроби імпорт модулів fs (у версії, яка працює з промісами - fs/promises) і path для роботи з файловою системою.\r Створи змінну contactsPath і запиши в неї шлях до файлу contacts.json. Для складання шляху використовуй методи модуля path.\r Додай асинхронні функції для роботи з колекцією контактів. У функціях використовуй модуль fs та його методи readFile() і writeFile(). Відповідні функції мають повертати необхідні дані за допомогою оператора return. Вивід в консоль в написаних функціях здійснюватись не повинен.\r Зроби експорт створених функцій.\r // contacts.js",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "cont": "node contacts.js"
+    "start": "node src/index",
+    "dev": "nodemon src/index",
+    "cont": "node src/contacts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "nanoid": "^5.0.6"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"

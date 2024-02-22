@@ -1,5 +1,5 @@
 import { program } from "commander";
-import * as ContactFetches from "./contacts.js";
+import * as ContactServise from "./contacts.js";
 
 program
   .option("-a, --action <type>", "choose action")
@@ -16,19 +16,18 @@ const options = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      // ...
-      break;
+      const allContacts = await ContactServise.listContacts();
+      return console.log(allContacts);
 
     case "get":
-      // ... id
-      break;
-
-    case "add":
-      // ... name email phone
-      break;
+      const contactById = await ContactServise.getContactById(id);
+      return console.log(contactById);
 
     case "remove":
-      // ... id
+      const deleteContact = await ContactServise.removeContact(id);
+      return console.log(deleteContact);
+
+    case "add":
       break;
 
     default:
@@ -36,4 +35,6 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-invokeAction(options);
+invokeAction({ action: "list" });
+// invokeAction({ action: "get", id: "1DEXoP8AuCGYc1YgoQ6hw" });
+// invokeAction({ action: "remove", id: "1DEXoP8AuCGYc1YgoQ6hw" });
