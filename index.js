@@ -17,7 +17,7 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const allContacts = await ContactServise.listContacts();
-      return console.log(allContacts);
+      return console.table(allContacts);
 
     case "get":
       const contactById = await ContactServise.getContactById(id);
@@ -28,13 +28,12 @@ async function invokeAction({ action, id, name, email, phone }) {
       return console.log(deleteContact);
 
     case "add":
-      break;
+      const addContact = await ContactServise.addContact(name, email, phone);
+      return console.log(addContact);
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
 }
 
-invokeAction({ action: "list" });
-// invokeAction({ action: "get", id: "1DEXoP8AuCGYc1YgoQ6hw" });
-// invokeAction({ action: "remove", id: "1DEXoP8AuCGYc1YgoQ6hw" });
+invokeAction(options);

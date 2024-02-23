@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import fs from "fs/promises";
 import path from "path";
 
-const contactsPath = path.resolve("src", "db", "contacts.json");
+const contactsPath = path.resolve("db", "contacts.json");
 const updateContacts = (contacts) =>
   fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
@@ -24,10 +24,19 @@ export async function removeContact(contactId) {
     return null;
   }
   const [result] = contacts.splice(index, 1);
-  await updateContacts(result);
+  await updateContacts(contacts);
   return result;
 }
 
-// export async function addContact(name, email, phone) {
-//   // ...твій код. Повертає об'єкт доданого контакту (з id).
-// }
+export async function addContact(name, email, phone) {
+  const contacts = await listContacts();
+  const newContact = {
+    id: nanoid(),
+    name,
+    email,
+    phone,
+  };
+  contacts.push(newContact);
+  updateContacts(contacts);
+  return newContact;
+}

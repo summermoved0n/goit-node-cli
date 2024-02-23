@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index",
-    "dev": "nodemon src/index",
-    "cont": "node src/contacts"
+    "start": "node index",
+    "dev": "nodemon index",
+    "cont": "node contacts"
   },
   "keywords": [],
   "author": "",
